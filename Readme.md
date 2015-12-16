@@ -10,12 +10,12 @@ Return partial copy of object containing specified subset of keys.
 
 ## Installation
 
-    $ npm install @micro-js/pick
+    $ npm install @f/pick
 
 ## Usage
 
 ```js
-var pick = require('@micro-js/pick')
+var pick = require('@f/pick')
 
 var source = {a: 1, b: 2, c: 3}
 
@@ -41,5 +41,5 @@ MIT
 [git-url]: https://github.com/micro-js/pick
 [standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat
 [standard-url]: https://github.com/feross/standard
-[npm-image]: https://img.shields.io/npm/v/@micro-js/pick.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/@micro-js/pick
+[npm-image]: https://img.shields.io/npm/v/@f/pick.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/@f/pick
