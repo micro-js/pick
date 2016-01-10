@@ -20,3 +20,11 @@ test('should ignore undefined values', function (t) {
   t.deepEqual(pick(['a', 'c'], source), {a: 1})
   t.end()
 })
+
+test('should work with predicates', function (t) {
+  var fn = function () {}
+  var source = {a: 1, b: fn}
+
+  t.deepEqual(pick(function (f) { return typeof f === 'function' }, source), {b: fn})
+  t.end()
+})

@@ -17,16 +17,18 @@ Return partial copy of object containing specified subset of keys.
 ```js
 var pick = require('@f/pick')
 
-var source = {a: 1, b: 2, c: 3}
+var source = {a: 1, b: 2, c: 3, d: function () {}}
 
-pick(['a', 'c'], souce) // => {a: 1, c: 3}
+pick(['a', 'c'], source) // => {a: 1, c: 3}
+pick('a', source)        // => {a: 1}
+pick(isFunction, source) // => {d: function () {}}
 ```
 
 ## API
 
 ### pick(keys, obj)
 
-- `keys` - keys to pick
+- `keys` - Key(s) to pick, or predicate function that receives `(val, key)`.
 - `obj` - source object to copy values from
 
 **Returns:** partial copy of `obj`
