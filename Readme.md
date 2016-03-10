@@ -18,20 +18,34 @@ Return partial copy of object containing specified subset of keys.
 var pick = require('@f/pick')
 
 var source = {a: 1, b: 2, c: 3, d: function () {}}
+var src1 = {a: 2}
+var src2 = {a: 1, b: 2}
 
-pick(['a', 'c'], source) // => {a: 1, c: 3}
-pick('a', source)        // => {a: 1}
-pick(isFunction, source) // => {d: function () {}}
+pick(['a', 'c'], source)     // => {a: 1, c: 3}
+pick('a', source)            // => {a: 1}
+pick(isFunction, source)     // => {d: function () {}}
+pick(['a', 'b'], src1, src2) // => {a: 2, b: 2}
 ```
 
 ## API
 
-### pick(keys, obj)
+### pick(keys, ...objs)
 
 - `keys` - Key(s) to pick, or predicate function that receives `(val, key)`.
-- `obj` - source object to copy values from
+- `...objs` - Source objects to pick from, the object in the leftmost position has the highest priority. Multiple objects do not work with predicate functions.
 
 **Returns:** partial copy of `obj`
+
+## Progressive picking
+
+This pick implementation has a somewhat unique feature - it can pick progressively from objects until the key is found. If you pass multiple objects it will, starting from the left hand side, use the first value in the list that is not undefined. E.g.
+
+```javascript
+var src1 = {a: 2}
+var src2 = {a: 1, b: 2}
+
+pick(['a', 'b'], src1, src2) // => {a: 2, b: 2}
+```
 
 ## License
 
